@@ -28,7 +28,7 @@ func (h *UserHandler) AddUserHandler(w http.ResponseWriter, r *http.Request) {
 	}
 	existingUser, _ := h.repo.GetUserByName(user.Name)
 	if existingUser.ID != 0 {
-		http.Error(w, "User with this name already exists", http.StatusBadRequest)
+		http.Error(w, "User with this name already exists", http.StatusConflict)
 		return
 	}
 
